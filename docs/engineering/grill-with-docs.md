@@ -1,6 +1,6 @@
 ## What it does
 
-`grill-with-docs` interviews you about a plan or design until you and the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) share one understanding of it, and writes the vocabulary and the hard decisions into your repo while it does. It is the same interview [grill-me](https://aihero.dev/skills-grill-me) runs (a round of questions, then wait, then the next round), pointed at a codebase.
+`grill-with-docs` interviews you about a plan or design until you and the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) share one understanding of it, and writes the vocabulary and the hard decisions into your repo while it does. It uses the same mandatory structured Q&A interface as [grill-me](https://aihero.dev/skills-grill-me), pointed at a codebase.
 
 It is **[stateful](https://www.aihero.dev/ai-coding-dictionary/stateful)**. Every other grilling skill leaves the [session](https://www.aihero.dev/ai-coding-dictionary/session) in your head; this one leaves files on disk. A term gets resolved and it lands in `CONTEXT.md` the moment it resolves, not batched at the end. A decision passes three gates and it lands as an ADR. That is the whole difference, and it is also the source of most of the trouble people have with the skill: the artifacts are real files in a real repo, so they can be absent when you expected them, and they can drift when more than one person is writing them.
 
@@ -24,7 +24,7 @@ The wayfinder split comes down to session count: `/grill-with-docs` for single-s
 
 The skill writes into your repo, so you need to be somewhere it is safe to write. Resolved terms go to a `CONTEXT.md` glossary at the root, or to the relevant context's `CONTEXT.md`, if a `CONTEXT-MAP.md` at the root marks the repo as multi-context. Decisions go to `docs/adr/`. Both are created lazily; nothing exists until the first term or decision crystallises, so there is nothing to scaffold up front.
 
-It also needs two other skills present, because its own `SKILL.md` is one line that delegates to them: [grilling](https://aihero.dev/skills-grilling) supplies the interview, [domain-modeling](https://aihero.dev/skills-domain-modeling) supplies the writing. Installing `grill-with-docs` alone gets you a skill that does not work.
+It also needs [grilling](https://aihero.dev/skills-grilling), [domain-modeling](https://aihero.dev/skills-domain-modeling), and the harness's structured Q&A tool. Claude Code supplies `AskUserQuestion`, Codex supplies `request_user_input` in supported modes, and this fork installs Pi's `question` extension.
 
 ## The paper trail
 
@@ -65,6 +65,7 @@ Nobody is happy with the name. There is an open suggestion to rename it `grill-d
 
 ## It's working if
 
+- Every product decision appears in the native Q&A picker, never as prose.
 - `CONTEXT.md` changes *during* the session, term by term, rather than appearing in one lump at the end.
 - The glossary reads as pure vocabulary (your project's words with tight definitions) and contains no implementation detail or spec-like prose.
 - Questions the codebase can answer get answered by reading the codebase, not asked of you.

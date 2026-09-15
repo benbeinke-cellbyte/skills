@@ -2,12 +2,30 @@
   "name": "mattpocock-skills",
   "version": "1.2.3",
   "private": true,
-  "description": "Matt Pocock's agent skills for real engineering",
+  "description": "Cellbyte's cross-harness fork of Matt Pocock's engineering skills",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mattpocock/skills"
+    "url": "https://github.com/benbeinke-cellbyte/skills"
   },
   "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "agent-skills",
+    "engineering"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions/question.ts"
+    ],
+    "skills": [
+      "./skills/engineering",
+      "./skills/productivity"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
   "scripts": {
     "changeset": "changeset",
     "version": "changeset version && node scripts/sync-plugin-version.mjs",

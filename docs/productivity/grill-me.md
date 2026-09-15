@@ -1,6 +1,6 @@
 ## What it does
 
-`grill-me` takes a **loose idea** and interviews you until you can commit to it. You do not need a worked-out plan to start: producing one is what the [session](https://www.aihero.dev/ai-coding-dictionary/session) is for. It asks in **rounds**: each round is the whole **frontier** (every question whose prerequisites you have already settled), so you are never asked something that hinges on an answer it hasn't heard yet.
+`grill-me` takes a **loose idea** and interviews you until you can commit to it. You do not need a worked-out plan to start: producing one is what the [session](https://www.aihero.dev/ai-coding-dictionary/session) is for. Every decision arrives through the harness's structured Q&A tool, in frontier-ordered rounds, never as a prose questionnaire.
 
 It is **[stateless](https://www.aihero.dev/ai-coding-dictionary/stateless)**. It writes no files and leaves no workspace behind. The only thing it leaves is a sharper version of the idea, in your own head.
 
@@ -16,7 +16,7 @@ Which of the three grilling skills you want depends on what is in front of you:
 - **A codebase to align against**: [grill-with-docs](https://aihero.dev/skills-grill-with-docs). The same interview, but [stateful](https://www.aihero.dev/ai-coding-dictionary/stateful): it reads your code and keeps what it learns in `CONTEXT.md` and ADRs.
 - **Too big for one session**: [wayfinder](https://aihero.dev/skills-wayfinder). It charts the effort as a map and runs grilling sessions inside it.
 
-Leave [plan mode](https://www.aihero.dev/ai-coding-dictionary/agent-mode) off. Plan mode primes the agent to rush toward producing a plan, which is the opposite of staying in inquiry.
+Use a harness mode that exposes its structured Q&A tool. In Codex this may require [plan mode](https://www.aihero.dev/ai-coding-dictionary/agent-mode); the skill stops rather than falling back to prose when the tool is unavailable.
 
 ## It's a conversation, not an interview
 
@@ -38,6 +38,7 @@ Talking your way through an ungrillable question is where sessions balloon. The 
 
 ## It's working if
 
+- Every decision appears in the native Q&A picker with a recommended option first.
 - You disagree with something. A session with no pushback from you is a session you didn't need.
 - Questions arrive in a few rounds rather than one long drip, and later rounds clearly build on what you said earlier.
 - You end up somewhere you didn't expect, because a question surfaced a decision you had been making implicitly.

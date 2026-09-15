@@ -10,6 +10,18 @@
 
 # Skills For Real Engineers
 
+> [!IMPORTANT]
+> This is Cellbyte's maintained fork of [mattpocock/skills](https://github.com/mattpocock/skills).
+> Its deliberate differences are:
+>
+> - every grilling decision uses the harness's native structured Q&A tool;
+> - `implement` assigns exactly one fresh implementation-owner subagent per ticket and lets the parent choose available models and reasoning effort; and
+> - Pi receives a `question` tool extension so it can honor the same interaction contract as Claude Code and Codex.
+>
+> Clone this fork and run `./scripts/install-cellbyte-skills.sh` to link the
+> promoted skills into Claude Code, Codex, and Pi. The links point back to the
+> checkout, so pulling this fork updates all three harnesses.
+
 [![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)
 
 My agent skills that I use every day to do real engineering - not vibe coding.
@@ -192,13 +204,13 @@ Skills I use daily for code work.
 **User-invoked**
 
 - **[ask-matt](./skills/engineering/ask-matt/SKILL.md)**: Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.
-- **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)**: Grilling session that also builds your project's domain model, sharpening terminology and updating `CONTEXT.md` and ADRs inline.
+- **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)**: Structured-Q&A grilling that also sharpens terminology and updates `CONTEXT.md` and ADRs inline.
 - **[triage](./skills/engineering/triage/SKILL.md)**: Move issues through a state machine of triage roles.
 - **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)**: Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
 - **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)**: Configure this repo for the engineering skills (issue tracker, triage labels, domain doc layout). Run once per repo before using the other engineering skills.
 - **[to-spec](./skills/engineering/to-spec/SKILL.md)**: Turn the current conversation into a spec and publish it to the issue tracker. No interview, just synthesizes what you've already discussed.
 - **[to-tickets](./skills/engineering/to-tickets/SKILL.md)**: Break any plan, spec, or conversation into a set of tracer-bullet tickets, each declaring its blocking edges, written as text in a local file, or as native blocking links on a real tracker.
-- **[implement](./skills/engineering/implement/SKILL.md)**: Build the work described by a spec or set of tickets, driving `/tdd` at pre-agreed seams and closing out with `/code-review` before committing.
+- **[implement](./skills/engineering/implement/SKILL.md)**: Dispatch one fresh implementation owner per ticket, schedule blockers, choose models, integrate commits, and verify the result.
 - **[wayfinder](./skills/engineering/wayfinder/SKILL.md)**: Plan a huge chunk of work, more than one agent session can hold, as a shared map of decision tickets on the issue tracker, and resolve them one at a time until the way to the destination is clear.
 
 **Model-invoked**
@@ -219,7 +231,7 @@ General workflow tools, not code-specific.
 
 **User-invoked**
 
-- **[grill-me](./skills/productivity/grill-me/SKILL.md)**: Get relentlessly interviewed about a plan or design until every branch of the design tree is resolved.
+- **[grill-me](./skills/productivity/grill-me/SKILL.md)**: Resolve a plan or design through relentless structured Q&A.
 - **[handoff](./skills/productivity/handoff/SKILL.md)**: Compact the current conversation into a handoff document so another agent can continue the work.
 - **[teach](./skills/productivity/teach/SKILL.md)**: Teach the user a new skill or concept over multiple sessions, using the current directory as a stateful teaching workspace.
 - **[to-questionnaire](./skills/productivity/to-questionnaire/SKILL.md)**: Turn a decision you can't answer alone into a Markdown questionnaire for the one person who can, filled in async, or together over a meeting. It grills you about the send (who it's for, what you need back), not the subject.
@@ -227,5 +239,5 @@ General workflow tools, not code-specific.
 
 **Model-invoked**
 
-- **[grilling](./skills/productivity/grilling/SKILL.md)**: Interview the user relentlessly about a plan, decision, or idea until every branch of the design tree is resolved. The reusable interview primitive behind `grill-me`, `grill-with-docs`, `triage`, `wayfinder` and `improve-codebase-architecture`.
+- **[grilling](./skills/productivity/grilling/SKILL.md)**: Resolve every branch of a design tree through the native structured Q&A tool. The reusable interview primitive behind the grilling workflows.
 - **[writing-for-agents](./skills/productivity/writing-for-agents/SKILL.md)**: Writing documents for agents: skills, AGENTS.md/CLAUDE.md, and any doc an agent reaches by a pointer.

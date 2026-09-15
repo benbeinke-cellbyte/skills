@@ -26,7 +26,7 @@ The tracker-dependent routes (triage, `to-spec`, `to-tickets`, `implement`) assu
 
 The word the skill gives you to think with is **flow**: a path *through* the skills, not a single one. Naming your situation places you on a flow at a step, which is a different answer from "here is the skill that matches your keywords". Four kinds of route exist, and the skill itself carries them in full:
 
-- **The main flow**, idea to ship. Grill, spec, tickets, implement, review, with two branches inside it: a prototype detour when a question needs runnable code to settle, and the spec-and-tickets split, which only earns its cost when the build spans more than one session.
+- **The main flow**, idea to ship. Structured-Q&A grilling, spec, tickets, per-ticket implementation owners, review, with two branches inside it: a prototype detour when a question needs runnable code to settle, and the spec-and-tickets split, which only earns its cost when the build spans more than one session.
 - **On-ramps**, for a situation that generates work and then merges onto the main flow: incoming bug reports, something broken, or an effort too foggy and too large to hold in one session.
 - **Standalones**, off every flow, reached for on their own terms: the prototype, the questionnaire, the merge conflict you are already sitting in.
 - **A vocabulary layer underneath**, the two references the other skills pull in when the words rather than the process are the problem.
@@ -69,7 +69,7 @@ No. Three separate proposals have asked for a router that reads your local `skil
 
 **It told me to edit a SKILL.md.**
 
-That advice is often correct and rarely durable. Someone asked it how to make [implement](https://aihero.dev/skills-implement) close tickets, got told to add a line to the skill, and immediately spotted the problem: `npx skills update` overwrites the file, and the plugin install is read-only. Put standing behaviour in your own `CLAUDE.md` or `AGENTS.md`, or say it in the invocation. Prompt-level adaptations survive updates: pointing the flow at Linear instead of GitHub, or asking it which open tickets could run in parallel, are both things people do this way.
+That advice is often correct and rarely durable in an upstream install: `npx skills update` overwrites local edits, and plugin installs are read-only. This fork is the durable customization layer. Its `implement` skill already schedules dependency-ready tickets and assigns one fresh owner per ticket; repository-specific tracker choices still belong in `CLAUDE.md`, `AGENTS.md`, or setup output.
 
 **It named a skill I don't have, or missed one I do.**
 
